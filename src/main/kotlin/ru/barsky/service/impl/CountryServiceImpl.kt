@@ -13,14 +13,12 @@ class CountryServiceImpl(
 ) : CountryService {
 
     override fun getAllCountries(pageIndex: Int): List<CountryDto> =
-        countryRepository.findByOrderByName(PageRequest.of(pageIndex, 2)).map { it.toDto() }
+        countryRepository.findByOrderByName(PageRequest.of(pageIndex, 3)).map { it.toDto() }
 
     private fun CountryEntity.toDto(): CountryDto =
         CountryDto(
             id = this.id,
             name = this.name,
-            capital = this.capital,
             population = this.population,
-            region = this.region,
         )
 }

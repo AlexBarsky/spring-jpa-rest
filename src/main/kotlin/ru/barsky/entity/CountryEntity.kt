@@ -1,13 +1,13 @@
 package ru.barsky.entity
 
-import org.springframework.data.annotation.Id
-import org.springframework.data.relational.core.mapping.Table
+import jakarta.persistence.*
 
-@Table("country")
-data class CountryEntity(
-    @Id var id: Long,
-    val name: String,
-    val capital: String,
-    val population: Int,
-    val region: String,
+@Entity
+@Table(name = "country")
+class CountryEntity(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long = 0,
+    val name: String = "",
+    val population: Int = 0,
 )
