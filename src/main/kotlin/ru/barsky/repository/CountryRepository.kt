@@ -7,4 +7,6 @@ import ru.barsky.entity.CountryEntity
 interface CountryRepository : CrudRepository<CountryEntity, Long> {
 
     fun findByOrderByName(pageable: Pageable): List<CountryEntity>
+
+    fun findByNameStartsWithIgnoreCaseOrderByName(prefix: String): List<CountryEntity>
 }

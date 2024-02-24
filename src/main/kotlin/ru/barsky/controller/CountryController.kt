@@ -15,4 +15,7 @@ class CountryController(
 
     @GetMapping("/{id}")
     fun getCountryById(@PathVariable("id") id: Long): CountryDto = countryService.getCountryById(id)
+
+    @GetMapping("/search")
+    fun searchCountries(@RequestParam("prefix") prefix: String): List<CountryDto> = countryService.search(prefix)
 }

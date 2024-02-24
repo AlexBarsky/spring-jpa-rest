@@ -21,6 +21,10 @@ class CountryServiceImpl(
             ?.toDto()
             ?:  throw RuntimeException("Country not found")
 
+    override fun search(prefix: String): List<CountryDto> =
+        countryRepository.findByNameStartsWithIgnoreCaseOrderByName(prefix)
+         .map { it.toDto() }
+
     private fun CountryEntity.toDto(): CountryDto =
         CountryDto(
             id = this.id,

@@ -1,5 +1,8 @@
 ### Get all the countries
 GET http://localhost:8080/countries?page=0
 
-### Get countriy by ID
+### Get country by ID
 GET http://localhost:8080/countries/5
+
+### Search countries by prefix
+GET http://localhost:8080/countries/search?prefix=fr
