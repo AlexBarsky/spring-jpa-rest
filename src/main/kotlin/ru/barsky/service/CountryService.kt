@@ -4,5 +4,5 @@ import ru.barsky.dto.CountryDto
 
 interface CountryService {
 
-    fun getAllCountries(): List<CountryDto>
+    fun getAllCountries(pageIndex: Int): List<CountryDto>
 }
