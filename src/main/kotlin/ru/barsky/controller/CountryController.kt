@@ -1,9 +1,6 @@
 package ru.barsky.controller
 
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import ru.barsky.dto.CountryDto
 import ru.barsky.service.CountryService
 
@@ -15,4 +12,7 @@ class CountryController(
 
     @GetMapping
     fun getAllCountries(@RequestParam("page") pageIndex: Int): List<CountryDto> = countryService.getAllCountries(pageIndex)
+
+    @GetMapping("/{id}")
+    fun getCountryById(@PathVariable("id") id: Long): CountryDto = countryService.getCountryById(id)
 }

@@ -1,2 +1,5 @@
 ### Get all the countries
-GET http://localhost:8080/countries?page=3
+GET http://localhost:8080/countries?page=0
+
+### Get countriy by ID
+GET http://localhost:8080/countries/5
