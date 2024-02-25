@@ -2,7 +2,7 @@
 GET http://localhost:8080/countries?page=2
 
 ### Get country by ID
-GET http://localhost:8080/countries/8
+GET http://localhost:8080/countries/10
 
 ### Search countries by prefix
 GET http://localhost:8080/countries/search?prefix=sp
@@ -13,17 +13,36 @@ Content-Type: application/json
 
 {
 	"name": "Spain",
-	"population": 100000000
+	"population": 100000000,
+    "cities": [
+	  {
+        "name": "Madrid"
+      },
+      {
+        "name": "Barcelona"
+      }
+    ]
 }
 
 ### Update country record
-PUT http://localhost:8080/countries/8
+PUT http://localhost:8080/countries/10
 Content-Type: application/json
 
 {
-    "name": "Spain",
-    "population": 99999999
+	"name": "Spain",
+	"population": 100000000,
+	"cities": [
+		{
+			"name": "Madrid"
+		},
+		{
+			"name": "Barcelona"
+		},
+        {
+          "name": "Valencia"
+        }
+	]
 }
 
 ### Delete country record
-DELETE http://localhost:8080/countries/8
+DELETE http://localhost:8080/countries/10

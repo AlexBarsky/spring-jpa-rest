@@ -2,7 +2,7 @@ package ru.barsky.exception
 
 import org.springframework.http.HttpStatus
 
-class CountryNotFoundException( countryId: Long ): BaseException(
+class CountryNotFoundException( countryId: Int ): BaseException(
     HttpStatus.NOT_FOUND,
     ApiError(
         errorCode = "COUNTRY_NOT_FOUND",

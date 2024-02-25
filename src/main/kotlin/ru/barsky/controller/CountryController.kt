@@ -14,23 +14,23 @@ class CountryController(
     fun getAllCountries(@RequestParam("page") pageIndex: Int): List<CountryDto> = countryService.getAllCountries(pageIndex)
 
     @GetMapping("/{id}")
-    fun getCountryById(@PathVariable("id") id: Long): CountryDto = countryService.getCountryById(id)
+    fun getCountryById(@PathVariable("id") id: Int): CountryDto = countryService.getCountryById(id)
 
     @GetMapping("/search")
     fun searchCountries(@RequestParam("prefix") prefix: String): List<CountryDto> = countryService.search(prefix)
 
     @PostMapping
-    fun createCountry(@RequestBody countryDto: CountryDto): Long {
+    fun createCountry(@RequestBody countryDto: CountryDto): Int {
         return countryService.createCountry(countryDto)
     }
 
     @PutMapping("/{id}")
-    fun updateCountry(@PathVariable("id") id: Long, @RequestBody countryDto: CountryDto) {
+    fun updateCountry(@PathVariable("id") id: Int, @RequestBody countryDto: CountryDto) {
         countryService.updateCountry(id, countryDto)
     }
 
     @DeleteMapping("/{id}")
-    fun deleteCountry(@PathVariable("id") id: Long) {
+    fun deleteCountry(@PathVariable("id") id: Int) {
         countryService.deleteCountry(id)
     }
 }
