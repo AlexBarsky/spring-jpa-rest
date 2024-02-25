@@ -4,6 +4,10 @@ spring:
     url: jdbc:postgresql://localhost:5432/testdb
     username: developer
     password: developer
+
+  liquibase:
+    change-log: classpath:liquibase/changelog.yml
+
   jpa:
     properties:
       hibernate:

@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: example-1
+      author: barsky
+      changes:
+        - addColumn:
+            tableName: country
+            columns:
+              - column:
+                  name: created_date
+                  type: timestamp
+              - column:
+                  name: updated_date
+                  type: timestamp
+              - column:
+                  name: created_by
+                  type: varchar
+              - column:
+                  name: updated_by
+                  type: varchar
+        - addColumn:
+            tableName: city
+            columns:
+              - column:
+                  name: created_date
+                  type: timestamp
+              - column:
+                  name: updated_date
+                  type: timestamp
+              - column:
+                  name: created_by
+                  type: varchar
+              - column:
+                  name: updated_by
+                  type: varchar
