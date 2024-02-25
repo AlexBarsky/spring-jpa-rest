@@ -25,9 +25,37 @@ class CountryServiceImpl(
         countryRepository.findByNameStartsWithIgnoreCaseOrderByName(prefix)
          .map { it.toDto() }
 
+    override fun createCountry(countryDto: CountryDto): Long {
+        return countryRepository.save(countryDto.toEntity()).id
+    }
+
+    override fun updateCountry(id: Long, countryDto: CountryDto) {
+        val existingCountry = countryRepository.findByIdOrNull(id)
+            ?: throw RuntimeException("Country not found")
+
+        existingCountry.name = countryDto.name
+        existingCountry.population = countryDto.population
+
+        countryRepository.save(existingCountry)
+    }
+
+    override fun deleteCountry(id: Long) {
+        val existingCountry = countryRepository.findByIdOrNull(id)
+            ?: throw RuntimeException("Country not found")
+
+        countryRepository.deleteById(existingCountry.id)
+    }
+
     private fun CountryEntity.toDto(): CountryDto =
         CountryDto(
             id = this.id,
+            name = this.name,
+            population = this.population,
+        )
+
+    private fun CountryDto.toEntity(): CountryEntity =
+        CountryEntity(
+            id = 0,
             name = this.name,
             population = this.population,
         )

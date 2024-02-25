@@ -7,7 +7,7 @@ import jakarta.persistence.*
 class CountryEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long = 0,
-    val name: String = "",
-    val population: Int = 0,
+    val id: Long = 0,
+    var name: String = "",
+    var population: Int = 0,
 )

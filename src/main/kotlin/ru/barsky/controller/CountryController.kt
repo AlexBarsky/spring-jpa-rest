@@ -18,4 +18,19 @@ class CountryController(
 
     @GetMapping("/search")
     fun searchCountries(@RequestParam("prefix") prefix: String): List<CountryDto> = countryService.search(prefix)
+
+    @PostMapping
+    fun createCountry(@RequestBody countryDto: CountryDto): Long {
+        return countryService.createCountry(countryDto)
+    }
+
+    @PutMapping("/{id}")
+    fun updateCountry(@PathVariable("id") id: Long, @RequestBody countryDto: CountryDto) {
+        countryService.updateCountry(id, countryDto)
+    }
+
+    @DeleteMapping("/{id}")
+    fun deleteCountry(@PathVariable("id") id: Long) {
+        countryService.deleteCountry(id)
+    }
 }
