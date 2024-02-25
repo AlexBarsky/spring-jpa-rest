@@ -12,4 +12,4 @@ class CityEntity (
     @ManyToOne
     @JoinColumn(name = "country_id")
     var country: CountryEntity,
-)
+): Auditable()

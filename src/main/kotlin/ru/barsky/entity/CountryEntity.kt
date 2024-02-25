@@ -13,4 +13,4 @@ class CountryEntity(
 
     @OneToMany(mappedBy = "country")
     var cities: List<CityEntity> = emptyList()
-)
+): Auditable()
