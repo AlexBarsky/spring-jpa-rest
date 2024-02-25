@@ -31,6 +31,9 @@ class CountryServiceImpl(
         countryRepository.findByNameStartsWithIgnoreCaseOrderByName(prefix)
          .map { it.toDto() }
 
+    override fun getAllCountryNames(): List<String> =
+        countryRepository.findAllByOrderByName().map { it.name }
+
     @Transactional
     override fun createCountry(countryDto: CountryDto): Int {
         val countryEntity = countryRepository.save(countryDto.toEntity())

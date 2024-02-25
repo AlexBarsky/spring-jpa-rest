@@ -7,6 +7,9 @@ GET http://localhost:8080/countries/10
 ### Search countries by prefix
 GET http://localhost:8080/countries/search?prefix=sp
 
+### Get all country`s names
+GET http://localhost:8080/countries/names
+
 ### Create new coutry record
 POST http://localhost:8080/countries
 Content-Type: application/json

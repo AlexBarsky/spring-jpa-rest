@@ -10,6 +10,8 @@ interface CountryService {
 
     fun search(prefix: String): List<CountryDto>
 
+    fun getAllCountryNames(): List<String>
+
     fun createCountry(countryDto: CountryDto): Int
 
     fun updateCountry(id: Int, countryDto: CountryDto)
