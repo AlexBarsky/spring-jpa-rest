@@ -5,6 +5,7 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import ru.barsky.dto.CountryDto
 import ru.barsky.entity.CountryEntity
+import ru.barsky.exception.CountryNotFoundException
 import ru.barsky.repository.CountryRepository
 import ru.barsky.service.CountryService
 
@@ -19,7 +20,7 @@ class CountryServiceImpl(
     override fun getCountryById(id: Long): CountryDto =
         countryRepository.findByIdOrNull(id)
             ?.toDto()
-            ?:  throw RuntimeException("Country not found")
+            ?:  throw CountryNotFoundException(id)
 
     override fun search(prefix: String): List<CountryDto> =
         countryRepository.findByNameStartsWithIgnoreCaseOrderByName(prefix)
@@ -31,7 +32,7 @@ class CountryServiceImpl(
 
     override fun updateCountry(id: Long, countryDto: CountryDto) {
         val existingCountry = countryRepository.findByIdOrNull(id)
-            ?: throw RuntimeException("Country not found")
+            ?: throw CountryNotFoundException(id)
 
         existingCountry.name = countryDto.name
         existingCountry.population = countryDto.population
@@ -41,7 +42,7 @@ class CountryServiceImpl(
 
     override fun deleteCountry(id: Long) {
         val existingCountry = countryRepository.findByIdOrNull(id)
-            ?: throw RuntimeException("Country not found")
+            ?: throw CountryNotFoundException(id)
 
         countryRepository.deleteById(existingCountry.id)
     }
